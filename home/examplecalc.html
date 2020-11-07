@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> osu! elo leaderboards </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/scripts/main.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/flexbox.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<header>
+    <nav>
+        <a href="index.html">
+            <button><img src="/images/osu-small.png"></button>
+        </a>
+        <a href="pools.html">
+            <button>Rules / Mappools</button>
+        </a>
+        <a href="about.html">
+            <button>About / Help</button>
+        </a>
+        <a href="examplecalc.html">
+            <button>Example Elo Calculator</button>
+        </a>
+    </nav>
+</header>
+
+
+<body>
+    <main>
+        <div class="flexclass">
+            <section class="first">
+                <form>
+                    <p>
+                        <h3>Player 1 (Winner)</h3>
+                    </p>
+                    <input type="text" id="P1" value="1200" class="elovals" /><br>
+                    <p>
+                        <h3>Player 2 (Loser)</h3>
+                    </p>
+                    <input type="text" id="P2" value="1200" class="elovals" /><br><br>
+                </form>
+                <button id="calc" type="">Run</button>
+                <button id="clear" type="submit">Clear</button>
+                <br><br>
+                <div id="response"></div>
+            </section>
+            <section class="second">
+                <h2>How it Works:</h2>
+                <ul>
+                    <li>Player 1 will always win.</li>
+                    <li>Both players are defaulted to being new to the system.</li>
+                </ul>
+                <p>This calculator shows how much elo is gained and lost from a match. The nature of the system makes the matches more meaningful if the lesser ranked player beats the higher ranked player. The current system works around the number 75 wherein
+                    a player can only lose or gain a maximum of 75 points if the match results in a major upset. Closer matches will get a reduced value that is relative to the number 75.</p>
+            </section>
+        </div>
+
+    </main>
+</body>
+
+</html>

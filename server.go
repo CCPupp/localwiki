@@ -2,14 +2,15 @@
 package main
 
 import (
+	"elocalc"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
 	_ "github.com/bmizerany/pq"
-
 	"github.com/kabukky/httpscerts"
 )
 
@@ -48,6 +49,25 @@ func main() {
 			http.ServeFile(w, r, "home/"+r.URL.Path[1:]+".html")
 		}
 		fmt.Fprintf(w, readFile(footerTemplate))
+	})
+
+	// Serve /calc with a text response.
+	http.HandleFunc("/calc", func(w http.ResponseWriter, r *http.Request) {
+		// Parses Form
+		err := r.ParseForm()
+		if err != nil {
+			http.Error(w, fmt.Sprintf("error parsing url %v", err), 500)
+		}
+		// Extracts information passed from AJAX statement on examplecalc.html
+		p1elo := r.FormValue("P1")
+		p1eloint, _ := strconv.Atoi(p1elo)
+		p2elo := r.FormValue("P2")
+		p2eloint, _ := strconv.Atoi(p2elo)
+		output := elocalc.CalcK(1, p1eloint, p2eloint, 0, 0, "Player 1", "Player 2")
+		// Display all calc through the console
+		println(p1eloint, p2eloint)
+		println(output[24:28], output[53:57])
+		fmt.Fprintln(w, output)
 	})
 
 	// Clears the output

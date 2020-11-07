@@ -32,3 +32,119 @@ body {
     height: 1500px;
     /* Used in this example to enable scrolling */
 }
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    font-weight: bold;
+    font-family: "Alfa Slab One", cursive;
+}
+
+header nav a {
+    text-decoration: none;
+}
+
+nav a button {
+    width: 20%;
+}
+
+ol {
+    font-weight: bold;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    color: black;
+}
+
+main {
+    padding: 3%;
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+footer {
+    padding-top: 5%;
+}
+
+h1 {
+    font-size: 50px;
+    color: #90caf9;
+}
+
+h2 {
+    text-decoration: black;
+    text-decoration-style: solid;
+    font-weight: bolder;
+    font-size: 180%;
+    text-decoration: underline;
+    color: #000000;
+}
+
+section h2 {
+    padding-bottom: 2%;
+}
+
+.first,
+.second {
+    width: 40%;
+    margin: 3%;
+    border-style: none;
+    padding: 1%;
+}
+
+section {
+    height: 500px;
+}
+
+footer {
+    margin-bottom: 2%;
+}
+
+nav {
+    background-color: #222222;
+    overflow: auto;
+    color: rgb(229, 228, 255);
+}
+
+nav button {
+    border: 1px solid #222222;
+    background: #d36f53;
+    background: -webkit-gradient( linear, left top, left bottom, from(#222222), to(#222222));
+    background: -webkit-linear-gradient(top, #222222, #222222);
+    background: -moz-linear-gradient(top, #222222, #222222);
+    background: -ms-linear-gradient(top, #222222, #222222);
+    background: -o-linear-gradient(top, #222222, #222222);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+    color: whitesmoke;
+    font-size: 200%;
+    font-family: "Lucida Grande", Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
+    line-height: 80px;
+}
+
+nav button:hover {
+    border-top-color: #205e87;
+    background: #205e87;
+    color: #ccc;
+}
+
+nav button:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+
+img {
+    margin-top: 5px;
+    margin-bottom: -20px;
+}
