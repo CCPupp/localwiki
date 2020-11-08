@@ -63,11 +63,13 @@ func main() {
 		p1eloint, _ := strconv.Atoi(p1elo)
 		p2elo := r.FormValue("P2")
 		p2eloint, _ := strconv.Atoi(p2elo)
-		output := elocalc.CalcK(1, p1eloint, p2eloint, 0, 0, "Player 1", "Player 2")
+		winnerElo, loserElo := elocalc.CalcK(1, p1eloint, p2eloint, 0, 0, "Player 1", "Player 2")
 		// Display all calc through the console
 		println(p1eloint, p2eloint)
-		println(output[24:28], output[53:57])
-		fmt.Fprintln(w, output)
+		println(winnerElo, loserElo)
+		fmt.Fprintf(w, "<h1>Player 1: "+strconv.Itoa(winnerElo)+"</h1>")
+		fmt.Fprintf(w, "<h1>Player 2: "+strconv.Itoa(loserElo)+"</h1>")
+
 	})
 
 	// Clears the output
@@ -88,7 +90,6 @@ func main() {
 			log.Fatal("Web server (HTTPS): ", errhttps)
 		}
 	}
-
 }
 
 func readFile(fileName string) string {
