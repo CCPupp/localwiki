@@ -79,13 +79,9 @@ h2 {
     text-decoration: black;
     text-decoration-style: solid;
     font-weight: bolder;
-    font-size: 180%;
+    font-size: 150%;
     text-decoration: underline;
     color: #000000;
-}
-
-section h2 {
-    padding-bottom: 2%;
 }
 
 .first,
@@ -94,10 +90,6 @@ section h2 {
     margin: 3%;
     border-style: none;
     padding: 1%;
-}
-
-section {
-    height: 500px;
 }
 
 footer {
@@ -163,4 +155,9 @@ input {
     width: 50%;
     background-color: #ffffffa9;
     font-size: larger;
+}
+
+code {
+    background-color: antiquewhite;
+    font-weight: bold;
 }
