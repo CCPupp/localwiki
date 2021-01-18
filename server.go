@@ -35,7 +35,7 @@ func main() {
 	http.Handle("/home/about/", http.StripPrefix("/home/about/", http.FileServer(http.Dir("home/about"))))
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("scripts"))))
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
-	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, readFile(headerTemplate))
 		if strings.Contains(r.URL.Path[1:], "projects") {
