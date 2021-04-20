@@ -2,12 +2,10 @@
 package main
 
 import (
-	"elocalc"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strconv"
 	"strings"
 
 	_ "github.com/bmizerany/pq"
@@ -32,7 +30,6 @@ func main() {
 	}
 	// Handler points to available directories
 	http.Handle("/home/", http.StripPrefix("/home/", http.FileServer(http.Dir("home"))))
-	http.Handle("/home/about/", http.StripPrefix("/home/about/", http.FileServer(http.Dir("home/about"))))
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("scripts"))))
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
@@ -49,32 +46,6 @@ func main() {
 			http.ServeFile(w, r, "home/"+r.URL.Path[1:]+".html")
 		}
 		fmt.Fprintf(w, readFile(footerTemplate))
-	})
-
-	// Serve /calc with a text response.
-	http.HandleFunc("/calc", func(w http.ResponseWriter, r *http.Request) {
-		// Parses Form
-		err := r.ParseForm()
-		if err != nil {
-			http.Error(w, fmt.Sprintf("error parsing url %v", err), 500)
-		}
-		// Extracts information passed from AJAX statement on examplecalc.html
-		p1elo := r.FormValue("P1")
-		p1eloint, _ := strconv.Atoi(p1elo)
-		p2elo := r.FormValue("P2")
-		p2eloint, _ := strconv.Atoi(p2elo)
-		winnerElo, loserElo := elocalc.CalcK(1, p1eloint, p2eloint, 0, 0, "Player 1", "Player 2")
-		// Display all calc through the console
-		println(p1eloint, p2eloint)
-		println(winnerElo, loserElo)
-		fmt.Fprintf(w, "<h1>Player 1: "+strconv.Itoa(winnerElo)+"</h1>")
-		fmt.Fprintf(w, "<h1>Player 2: "+strconv.Itoa(loserElo)+"</h1>")
-
-	})
-
-	// Clears the output
-	http.HandleFunc("/clear", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "")
 	})
 
 	//Serves local webpage for testing
